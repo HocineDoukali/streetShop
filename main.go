@@ -9,44 +9,25 @@ import (
 
 func main() {
 	// Charger le template
-	tmpl, err := template.ParseFiles("streetShop.html")
+	tmpl, err := template.ParseFiles("StreetShop.html")
 	if err != nil {
 		fmt.Println("Erreur lors du chargement du template :", err)
 		os.Exit(1)
 	}
 
-	// Servir les fichiers statiques (CSS + images)
-	http.Handle("/streetShop.css", http.FileServer(http.Dir(".")))
-	http.Handle("/1.png", http.FileServer(http.Dir(".")))
-	http.Handle("/19A.webp", http.FileServer(http.Dir(".")))
-	http.Handle("/21A.webp", http.FileServer(http.Dir(".")))
-	http.Handle("/22A.webp", http.FileServer(http.Dir(".")))
-	http.Handle("/16A.webp", http.FileServer(http.Dir(".")))
-	http.Handle("/18A.webp", http.FileServer(http.Dir(".")))
-	http.Handle("/33B.webp", http.FileServer(http.Dir(".")))
-	http.Handle("/34B.webp", http.FileServer(http.Dir(".")))
+	// Servir le CSS
+	http.Handle("/StreetShop.css", http.FileServer(http.Dir(".")))
+
+	// Servir les images dans static/img
+	fsImages := http.FileServer(http.Dir("./static/img"))
+	http.Handle("/static/img/", http.StripPrefix("/static/img/", fsImages))
 
 	// Route principale
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		data := map[string]string{
-			"Title":    "Produits - StreetShop",
-			"SiteName": "StreetShop",
+			"Title": "Produits - StreetShop",
 		}
 		tmpl.Execute(w, data)
-	})
-
-	// Route principale
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := map[string]string{
-			"Title":    "Produits - StreetShop",
-			"SiteName": "StreetShop",
-		}
-		tmpl.Execute(w, data)
-	})
-
-	// Route /add (pour plus tard)
-	http.HandleFunc("/add", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "<h1>Page d’ajout de produit (à venir)</h1>")
 	})
 
 	// Lancer le serveur

@@ -4,73 +4,94 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{.Title}}</title>
-  <link rel="stylesheet" href="/streetShop.css">
+  <link rel="stylesheet" href="/StreetShop.css">
 </head>
 <body>
+  <!-- 🟩 BARRE DE NAVIGATION -->
   <header class="navbar">
     <nav>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="/add">Add</a></li>
+        <li><a href="#">Add</a></li>
       </ul>
-      <!-- Logo remplacé par l'image -->
+
+      <!-- 🟥 LOGO AU CENTRE -->
       <div class="logo">
-        <img src="/1.png" alt="StreetShop logo" class="logo-img">
+        <img src="/static/img/Logo/1.png" alt="StreetShop Logo" class="logo-img">
       </div>
     </nav>
   </header>
 
+  <!-- 🟦 CONTENU PRINCIPAL -->
   <main class="container">
-    <h1 class="title">LES <span>PRODUITS</span></h1>
+    <h1 class="title">
+      <span class="les">LES</span><br>
+      <span class="produits">PRODUITS</span>
+    </h1>
 
+    <!-- 🟨 PRODUITS -->
     <section class="products">
       <div class="product-card">
-        <img src="/19A.webp" alt="Pull vert">
-        <h2>PALACE PULL À CAPUCHE UNISEXE CHASSEUR</h2>
-        <p class="price">140€</p>
-        <button>Consulter</button>
+        <img src="/static/img/Products/19A.webp" alt="Pull vert">
+        <div class="product-info">
+          <h2>PALACE PULL À CAPUCHE UNISEXE CHASSEUR</h2>
+          <p class="price">140€</p>
+          <button>Consulter</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="/21A.webp" alt="Pull marine">
-        <h2>PALACE PULL À CAPUCHE MARINE</h2>
-        <p class="price">138€</p>
-        <button>Consulter</button>
+        <img src="/static/img/Products/21A.webp" alt="Pull marine">
+        <div class="product-info">
+          <h2>PALACE PULL À CAPUCHE MARINE</h2>
+          <p class="price">138€</p>
+          <button>Consulter</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="/22A.webp" alt="Pull noir">
-        <h2>PALACE PULL CREW PASSEPOILÉ NOIR</h2>
-        <p class="price">132€</p>
-        <button>Consulter</button>
+        <img src="/static/img/Products/22A.webp" alt="Pull noir">
+        <div class="product-info">
+          <h2>PALACE PULL CREW PASSEPOILÉ NOIR</h2>
+          <p class="price">132€</p>
+          <button>Consulter</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="/16A.webp" alt="Pull mojito">
-        <h2>PALACE WASHED TERRY 1/4 PLACKET HOOD MOJITO</h2>
-        <p class="price">165€</p>
-        <button>Consulter</button>
+        <img src="/static/img/Products/16A.webp" alt="Pull mojito">
+        <div class="product-info">
+          <h2>PALACE WASHED TERRY 1/4 PLACKET HOOD MOJITO</h2>
+          <p class="price">165€</p>
+          <button>Consulter</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="/18A.webp" alt="Jean stone">
-        <h2>PALACE PULL INTERNATIONAL NOIR</h2>
-        <p class="price">125€</p>
-        <button>Consulter</button>
+        <img src="/static/img/Products/18A.webp" alt="Pull noir">
+        <div class="product-info">
+          <h2>PALACE PULL INTERNATIONAL NOIR</h2>
+          <p class="price">125€</p>
+          <button>Consulter</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="/34B.webp" alt="Jean bossy">
-        <h2>PALACE PANTALON BOSSY JEAN STONE</h2>
-        <p class="price">125€</p>
-        <button>Consulter</button>
+        <img src="/static/img/Products/34B.webp" alt="Jean stone">
+        <div class="product-info">
+          <h2>PALACE PANTALON BOSSY JEAN STONE</h2>
+          <p class="price">125€</p>
+          <button>Consulter</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="/33B.webp" alt="Cargo noir">
-        <h2>PALACE PANTALON CARGO GORE-TEX R-TEK NOIR</h2>
-        <p class="price">110€</p>
-        <button>Consulter</button>
+        <img src="/static/img/Products/33B.webp" alt="Cargo noir">
+        <div class="product-info">
+          <h2>PALACE PANTALON CARGO GORE-TEX R-TEK NOIR</h2>
+          <p class="price">110€</p>
+          <button>Consulter</button>
+        </div>
       </div>
     </section>
   </main>
