@@ -4,48 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>StreetShop - Produits</title>
-    <link rel="stylesheet" href="/static/css/StreetShop.css">
+    <link rel="stylesheet" href="/StreetShop.css">
 </head>
 <body>
     <header class="navbar">
-        <ul class="nav-links">
-            <li><a href="/StreetShop">Accueil</a></li>
-            <li><a href="/add">Ajouter</a></li>
-            <li><a href="/cart">Panier</a></li>
-        </ul>
+        <a href="/StreetShop" class="btn-home">Home</a>
         <div class="logo">
-            <img src="/static/img/logo/1.png" alt="Logo StreetShop" class="logo-img">
+            <img src="/static/img/logo/1.png" alt="Logo" class="logo-img">
         </div>
     </header>
 
-    <div class="container">
+    <main class="container">
         <h1>Nos Produits</h1>
         <div class="products">
             {{range .}}
-            <div class="product-card product-detail">
+            <div class="product-detail">
                 <img src="{{.Image}}" alt="{{.Name}}" class="product-img">
                 <div class="product-info">
                     <h2>{{.Name}}</h2>
                     <p>{{.Description}}</p>
-                    <div class="price-promo">
-                        {{if .Promo}}
+                    {{if .Promo}}
+                    <p class="price-promo">
                         <span class="price-strike">{{.Price}}€</span>
                         <span class="price-promo-new">{{.PromoPrice}}€</span>
-                        {{else}}
-                        <span class="price">{{.Price}}€</span>
-                        {{end}}
-                    </div>
-                    <form class="add-cart-form" action="/add-to-cart" method="POST">
+                    </p>
+                    {{else}}
+                    <p class="price">{{.Price}}€</p>
+                    {{end}}
+                    <form action="/add-to-cart" method="POST" class="add-cart-form">
                         <input type="hidden" name="product_id" value="{{.ID}}">
                         <input type="number" name="quantity" value="1" min="1">
                         <button type="submit">Ajouter au panier</button>
                     </form>
-                    <a href="/article?id={{.ID}}" class="btn">Voir détails</a>
+                    <a href="/article?id={{.ID}}">Voir le produit</a>
                 </div>
             </div>
             {{end}}
         </div>
-    </div>
+
+        <a href="/cart">Voir le panier</a>
+    </main>
 </body>
 </html>
 {{end}}

@@ -42,20 +42,20 @@ var (
 )
 
 func main() {
-	// Fonction de multiplication pour template
+	// Fonction multiplication pour le panier
 	funcMap := template.FuncMap{
 		"mul": func(a, b int) int {
 			return a * b
 		},
 	}
 
-	// Charger templates avec fonction mul
-	StreetShopTmpl := template.Must(template.New("StreetShop.html").Funcs(funcMap).ParseFiles("StreetShop.html"))
-	ArticleTmpl := template.Must(template.New("article.html").Funcs(funcMap).ParseFiles("article.html"))
-	AddTmpl := template.Must(template.New("add.html").Funcs(funcMap).ParseFiles("add.html"))
-	CartTmpl := template.Must(template.New("cart.html").Funcs(funcMap).ParseFiles("cart.html"))
+	// Charger les templates correctement
+	StreetShopTmpl := template.Must(template.New("").Funcs(funcMap).ParseFiles("StreetShop.html"))
+	ArticleTmpl := template.Must(template.New("").Funcs(funcMap).ParseFiles("article.html"))
+	AddTmpl := template.Must(template.New("").Funcs(funcMap).ParseFiles("add.html"))
+	CartTmpl := template.Must(template.New("").Funcs(funcMap).ParseFiles("cart.html"))
 
-	// Gestion session
+	// Gestion des sessions
 	getSessionID := func(r *http.Request) string {
 		cookie, err := r.Cookie("session_id")
 		if err != nil {
@@ -80,7 +80,7 @@ func main() {
 		}
 	})
 
-	// Page détail produit
+	// Détails produit
 	http.HandleFunc("/article", func(w http.ResponseWriter, r *http.Request) {
 		idStr := r.URL.Query().Get("id")
 		id, _ := strconv.Atoi(idStr)
@@ -93,7 +93,7 @@ func main() {
 		http.NotFound(w, r)
 	})
 
-	// Ajouter un produit (template)
+	// Ajouter un produit
 	http.HandleFunc("/add", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
 			AddTmpl.Execute(w, nil)
@@ -211,6 +211,6 @@ func main() {
 		CartTmpl.Execute(w, data)
 	})
 
-	fmt.Println("🚀 Serveur démarré sur http://localhost:8080/StreetShop")
+	fmt.Println("🚀 Serveur StreetShop démarré sur http://localhost:8080/StreetShop")
 	http.ListenAndServe(":8080", nil)
 }

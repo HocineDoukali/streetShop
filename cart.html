@@ -4,22 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Panier</title>
-    <link rel="stylesheet" href="/static/css/StreetShop.css">
+    <link rel="stylesheet" href="/StreetShop.css">
 </head>
 <body>
     <header class="navbar">
-        <ul class="nav-links">
-            <li><a href="/StreetShop">Accueil</a></li>
-            <li><a href="/add">Ajouter</a></li>
-            <li><a href="/cart">Panier</a></li>
-        </ul>
+        <a href="/StreetShop" class="btn-home">Home</a>
         <div class="logo">
-            <img src="/static/img/logo/1.png" alt="Logo StreetShop" class="logo-img">
+            <img src="/static/img/logo/1.png" alt="Logo" class="logo-img">
         </div>
     </header>
 
-    <div class="container">
-        <h1>Mon Panier</h1>
+    <main class="container">
+        <h1>Panier</h1>
         {{if .Items}}
         <table>
             <tr>
@@ -32,28 +28,26 @@
             <tr>
                 <td>{{.Product.Name}}</td>
                 <td>{{.Quantity}}</td>
-                <td>
-                    {{if .Product.Promo}}
-                        {{.Product.PromoPrice}}€ x {{.Quantity}} = {{mul .Product.PromoPrice .Quantity}}€
-                    {{else}}
-                        {{.Product.Price}}€ x {{.Quantity}} = {{mul .Product.Price .Quantity}}€
-                    {{end}}
-                </td>
+                <td>{{mul .Product.Price .Quantity}}€</td>
                 <td>
                     <form action="/remove-from-cart" method="POST">
                         <input type="hidden" name="product_id" value="{{.Product.ID}}">
-                        <button type="submit" class="btn-red">Supprimer</button>
+                        <button type="submit">Supprimer</button>
                     </form>
                 </td>
             </tr>
             {{end}}
+            <tr>
+                <td colspan="2"><strong>Total :</strong></td>
+                <td colspan="2">{{.Total}}€</td>
+            </tr>
         </table>
-        <h2>Total : {{.Total}}€</h2>
         {{else}}
-        <p>Votre panier est vide.</p>
+        <p>Le panier est vide.</p>
         {{end}}
-        <a href="/StreetShop" class="btn">← Retour aux produits</a>
-    </div>
+
+        <a href="/StreetShop">← Retour aux produits</a>
+    </main>
 </body>
 </html>
 {{end}}
