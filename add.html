@@ -1,0 +1,112 @@
+{{define "add"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un produit</title>
+    <link rel="stylesheet" href="/static/css/StreetShop.css">
+</head>
+<body>
+    <header class="navbar">
+        <ul class="nav-links">
+            <li><a href="/StreetShop">Accueil</a></li>
+            <li><a href="/add">Ajouter</a></li>
+            <li><a href="/cart">Panier</a></li>
+        </ul>
+        <div class="logo">
+            <img src="/static/img/logo/1.png" alt="Logo StreetShop" class="logo-img">
+        </div>
+    </header>
+
+    <div class="container form-container">
+        <h1>Ajouter un nouveau produit</h1>
+        <form action="/add" method="POST">
+            <div class="form-group">
+                <label for="name">Nom :</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Prix :</label>
+                <input type="number" name="price" id="price" required>
+            </div>
+            <div class="form-group">
+                <label for="promo">En promotion ?</label>
+                <input type="checkbox" name="promo" id="promo">
+            </div>
+            <div class="form-group">
+                <label for="promoPrice">Prix promo :</label>
+                <input type="number" name="promoPrice" id="promoPrice">
+            </div>
+            <div class="form-group">
+                <label for="image">URL Image :</label>
+                <input type="text" name="image" id="image">
+            </div>
+            <div class="form-group">
+                <label for="description">Description :</label>
+                <textarea name="description" id="description" rows="4"></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-red">Ajouter</button>
+                <a href="/StreetShop" class="btn-red">← Retour à l'accueil</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{{end}}
+{{define "add"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un produit</title>
+    <link rel="stylesheet" href="/static/css/StreetShop.css">
+</head>
+<body>
+    <header class="navbar">
+        <ul class="nav-links">
+            <li><a href="/StreetShop">Accueil</a></li>
+            <li><a href="/add">Ajouter</a></li>
+            <li><a href="/cart">Panier</a></li>
+        </ul>
+        <div class="logo">
+            <img src="/static/img/logo/1.png" alt="Logo StreetShop" class="logo-img">
+        </div>
+    </header>
+
+    <div class="container form-container">
+        <h1>Ajouter un nouveau produit</h1>
+        <form action="/add" method="POST">
+            <div class="form-group">
+                <label for="name">Nom :</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Prix :</label>
+                <input type="number" name="price" id="price" required>
+            </div>
+            <div class="form-group">
+                <label for="promo">En promotion ?</label>
+                <input type="checkbox" name="promo" id="promo">
+            </div>
+            <div class="form-group">
+                <label for="promoPrice">Prix promo :</label>
+                <input type="number" name="promoPrice" id="promoPrice">
+            </div>
+            <div class="form-group">
+                <label for="image">URL Image :</label>
+                <input type="text" name="image" id="image">
+            </div>
+            <div class="form-group">
+                <label for="description">Description :</label>
+                <textarea name="description" id="description" rows="4"></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-red">Ajouter</button>
+                <a href="/StreetShop" class="btn-red">← Retour à l'accueil</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{{end}}

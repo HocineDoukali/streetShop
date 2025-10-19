@@ -1,99 +1,51 @@
+{{define "StreetShop"}}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{.Title}}</title>
-  <link rel="stylesheet" href="/StreetShop.css">
+    <meta charset="UTF-8">
+    <title>StreetShop - Produits</title>
+    <link rel="stylesheet" href="/static/css/StreetShop.css">
 </head>
 <body>
-  <!-- 🟩 BARRE DE NAVIGATION -->
-  <header class="navbar">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Add</a></li>
-      </ul>
-
-      <!-- 🟥 LOGO AU CENTRE -->
-      <div class="logo">
-        <img src="/static/img/Logo/1.png" alt="StreetShop Logo" class="logo-img">
-      </div>
-    </nav>
-  </header>
-
-  <!-- 🟦 CONTENU PRINCIPAL -->
-  <main class="container">
-    <h1 class="title">
-      <span class="les">LES</span><br>
-      <span class="produits">PRODUITS</span>
-    </h1>
-
-    <!-- 🟨 PRODUITS -->
-    <section class="products">
-      <div class="product-card">
-        <img src="/static/img/Products/19A.webp" alt="Pull vert">
-        <div class="product-info">
-          <h2>PALACE PULL À CAPUCHE UNISEXE CHASSEUR</h2>
-          <p class="price">140€</p>
-          <button>Consulter</button>
+    <header class="navbar">
+        <ul class="nav-links">
+            <li><a href="/StreetShop">Accueil</a></li>
+            <li><a href="/add">Ajouter</a></li>
+            <li><a href="/cart">Panier</a></li>
+        </ul>
+        <div class="logo">
+            <img src="/static/img/logo/1.png" alt="Logo StreetShop" class="logo-img">
         </div>
-      </div>
+    </header>
 
-      <div class="product-card">
-        <img src="/static/img/Products/21A.webp" alt="Pull marine">
-        <div class="product-info">
-          <h2>PALACE PULL À CAPUCHE MARINE</h2>
-          <p class="price">138€</p>
-          <button>Consulter</button>
+    <div class="container">
+        <h1>Nos Produits</h1>
+        <div class="products">
+            {{range .}}
+            <div class="product-card product-detail">
+                <img src="{{.Image}}" alt="{{.Name}}" class="product-img">
+                <div class="product-info">
+                    <h2>{{.Name}}</h2>
+                    <p>{{.Description}}</p>
+                    <div class="price-promo">
+                        {{if .Promo}}
+                        <span class="price-strike">{{.Price}}€</span>
+                        <span class="price-promo-new">{{.PromoPrice}}€</span>
+                        {{else}}
+                        <span class="price">{{.Price}}€</span>
+                        {{end}}
+                    </div>
+                    <form class="add-cart-form" action="/add-to-cart" method="POST">
+                        <input type="hidden" name="product_id" value="{{.ID}}">
+                        <input type="number" name="quantity" value="1" min="1">
+                        <button type="submit">Ajouter au panier</button>
+                    </form>
+                    <a href="/article?id={{.ID}}" class="btn">Voir détails</a>
+                </div>
+            </div>
+            {{end}}
         </div>
-      </div>
-
-      <div class="product-card">
-        <img src="/static/img/Products/22A.webp" alt="Pull noir">
-        <div class="product-info">
-          <h2>PALACE PULL CREW PASSEPOILÉ NOIR</h2>
-          <p class="price">132€</p>
-          <button>Consulter</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="/static/img/Products/16A.webp" alt="Pull mojito">
-        <div class="product-info">
-          <h2>PALACE WASHED TERRY 1/4 PLACKET HOOD MOJITO</h2>
-          <p class="price">165€</p>
-          <button>Consulter</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="/static/img/Products/18A.webp" alt="Pull noir">
-        <div class="product-info">
-          <h2>PALACE PULL INTERNATIONAL NOIR</h2>
-          <p class="price">125€</p>
-          <button>Consulter</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="/static/img/Products/34B.webp" alt="Jean stone">
-        <div class="product-info">
-          <h2>PALACE PANTALON BOSSY JEAN STONE</h2>
-          <p class="price">125€</p>
-          <button>Consulter</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="/static/img/Products/33B.webp" alt="Cargo noir">
-        <div class="product-info">
-          <h2>PALACE PANTALON CARGO GORE-TEX R-TEK NOIR</h2>
-          <p class="price">110€</p>
-          <button>Consulter</button>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
 </body>
 </html>
+{{end}}

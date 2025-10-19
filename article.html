@@ -1,0 +1,47 @@
+{{define "article"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Name}}</title>
+    <link rel="stylesheet" href="/static/css/StreetShop.css">
+</head>
+<body>
+    <header class="navbar">
+        <ul class="nav-links">
+            <li><a href="/StreetShop">Accueil</a></li>
+            <li><a href="/add">Ajouter</a></li>
+            <li><a href="/cart">Panier</a></li>
+        </ul>
+        <div class="logo">
+            <img src="/static/img/logo/1.png" alt="Logo StreetShop" class="logo-img">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="product-detail product-card">
+            <img src="{{.Image}}" alt="{{.Name}}" class="product-img">
+            <div class="product-info">
+                <h1>{{.Name}}</h1>
+                <p>{{.Description}}</p>
+                <div class="price-promo">
+                    {{if .Promo}}
+                    <span class="price-strike">{{.Price}}€</span>
+                    <span class="price-promo-new">{{.PromoPrice}}€</span>
+                    {{else}}
+                    <span class="price">{{.Price}}€</span>
+                    {{end}}
+                </div>
+                <form class="add-cart-form" action="/add-to-cart" method="POST">
+                    <input type="hidden" name="product_id" value="{{.ID}}">
+                    <label for="quantity">Quantité :</label>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1">
+                    <button type="submit">Ajouter au panier</button>
+                </form>
+                <a href="/StreetShop" class="btn">← Retour à l'accueil</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{{end}}
